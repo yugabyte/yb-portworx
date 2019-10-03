@@ -56,6 +56,15 @@ spec:
     app: yb-master
   type: LoadBalancer
 ---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+   namespace: yb-portworx-db
+   name: portworx-sc
+provisioner: kubernetes.io/portworx-volume
+parameters:
+  repl: "1"
+---
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
@@ -129,15 +138,18 @@ spec:
         volumeMounts:
         - name: datadir0
           mountPath: /mnt/data0
-      volumeClaimTemplates:
-      - metadata:
-        name: datadir
-        spec:
-          accessModes: [ "ReadWriteOnce" ]
-          resources:
-            requests:
-          storage: 1Gi
-          storageClassName: standard  
+  # These are converted to volume claims by the controller
+  # and mounted at the paths mentioned above.
+  # do not use these in production until ssd GCEPersistentDisk or other ssd pd        
+  volumeClaimTemplates:
+    - metadata:
+        name: datadir0
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
+        storageClassName: portworx-sc  
 #      volumes:
 ##      - name: datadir0
 ##        hostPath:
@@ -216,7 +228,7 @@ spec:
                 fieldPath: status.podIP
           - name: POD_NAMESPACE
             valueFrom:
-            fieldRef:
+              fieldRef:
                 fieldPath: metadata.namespace
           - name: POD_NAME
             valueFrom:
@@ -248,15 +260,18 @@ spec:
         volumeMounts:
         - name: datadir1
           mountPath: /mnt/data1
-      volumeClaimTemplates:
-      - metadata:
+  # These are converted to volume claims by the controller
+  # and mounted at the paths mentioned above.
+  # do not use these in production until ssd GCEPersistentDisk or other ssd pd 
+  volumeClaimTemplates:
+  - metadata:
         name: datadir1
-        spec:
-          accessModes: [ "ReadWriteOnce" ]
-          resources:
-            requests:
-          storage: 1Gi
-          storageClassName: standard
+    spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
+        storageClassName: portworx-sc
 #      volumes:
 #      - name: datadir1
 #        hostPath:
