@@ -23,10 +23,10 @@ set your default cluster:-
 ``` gcloud services enable compute.googleapis.com ```
 
 generated spec.yaml using the tool, added screenshots for the values reference.
-![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/basic.png)
-![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Network.png)
-![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Storage.png)
-![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Customize.png)
+![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/basic.png)
+![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Network.png)
+![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Storage.png)
+![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Customize.png)
 
 Apply the specs:-
 
@@ -45,7 +45,7 @@ Monitor Portworx cluster status
     * Run ``` kubectl create -f yugabyte-portworx-db.yaml ```
 
 You can see on gcp console that your pvc's have been created
-![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/pvc.png)
+![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/pvc.png)
 
 3. Now for testing, lets create, load & test the sample yb_demo database and tables using below scripts:
     * From the host vm run:-
