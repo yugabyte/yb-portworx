@@ -1,6 +1,7 @@
 # yb-portworx-db
 
 prerequisites: https://docs.portworx.com/start-here-installation/#installation-prerequisites
+
 commands referred from :https://docs.portworx.com/portworx-install-with-kubernetes/cloud/gcp/gke/#create-your-gke-cluster-using-gcloud
 
 inside your gke create a zonal cluster:
