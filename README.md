@@ -26,7 +26,7 @@ Below are the steps for deployment:
 ``` gcloud services enable compute.googleapis.com ```
 
  ( Generated px-spec.yaml using the tool, added screenshots for the values reference.
-<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/basic.png" width="324" height="324">
+<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/basic.png" width="700" >
 ![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Network.png)
 ![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Storage.png)
 ![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Customize.png)
