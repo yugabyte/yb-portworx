@@ -74,7 +74,7 @@ PX_POD=$(kubectl get pods -l name=portworx -n kube-system -o jsonpath='{.items[0
 kubectl exec $PX_POD -n kube-system -- /opt/pwx/bin/pxctl status
 ```
 
-    For more details and options for portworx setup refer [here](https://docs.portworx.com/portworx-install-with-kubernetes/cloud/gcp/gke/#create-your-gke-cluster-using-gcloud)
+* For more details and options for portworx setup refer [here](https://docs.portworx.com/portworx-install-with-kubernetes/cloud/gcp/gke/#create-your-gke-cluster-using-gcloud)
 
 8. Deploy yugabyte cluster inside the GKE cluster:
     * Run 
