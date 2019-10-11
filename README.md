@@ -21,9 +21,11 @@ Below are the steps for deployment:
 ```
 
 2. set your default cluster:-
-``` gcloud config set container/cluster px-demo ```
-``` gcloud container clusters get-credentials px-demo --zone us-east1-b ```
-``` gcloud services enable compute.googleapis.com ```
+``` 
+gcloud config set container/cluster px-demo 
+gcloud container clusters get-credentials px-demo --zone us-east1-b
+gcloud services enable compute.googleapis.com 
+```
 
  ( Generated px-spec.yaml using the tool, added screenshots for the values reference.
 <img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/basic.png" width="700" >
@@ -35,21 +37,24 @@ Below are the steps for deployment:
 ``` kubectl apply -f px-spec.yaml ```
 
 4. Monitor the portworx pods
-Wait till all Portworx pods show as ready in the below output:
+    Wait till all Portworx pods show as ready in the below output:
 ``` kubectl get pods -o wide -n kube-system -l name=portworx ```
 
 5. Monitor Portworx cluster status
-``` PX_POD=$(kubectl get pods -l name=portworx -n kube-system -o jsonpath='{.items[0].metadata.name}') ```
-``` kubectl exec $PX_POD -n kube-system -- /opt/pwx/bin/pxctl status ```
+```
+PX_POD=$(kubectl get pods -l name=portworx -n kube-system -o jsonpath='{.items[0].metadata.name}')
+kubectl exec $PX_POD -n kube-system -- /opt/pwx/bin/pxctl status
+```
 
 
 6. Deploy yugabyte cluster inside the k3s:
     * Run ``` kubectl create -f yugabyte-portworx-db.yaml ```
-You can see on gcp console that your pvc's have been created
+
+    You can see on gcp console that your pvc's have been created
 
 <img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/pvc.png" width="700" >
 
-7. Now for testing, lets create, load & test the sample yb_demo database and tables using below scripts:
+7. Now for testing lets create, load & test the sample yb_demo database and tables using below scripts:
     * From the host vm run:-
     (Pass value to the variable "tserver" & "namespace" with the name of your tserver pod and namespace, default value set is "yb-tserver-0" & "yb-px-db" respectively.)
         * Create the database and tables
