@@ -27,10 +27,9 @@ Below are the steps for deployment:
 
  ( Generated px-spec.yaml using the tool, added screenshots for the values reference.
 <img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/basic.png" width="700" >
-![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Network.png)
-![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Storage.png)
-![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Customize.png)
- )
+<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Network.png" width="700" >
+<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Storage.png" width="700" >
+<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Customize.png" width="700" >
  
 3. Apply the specs:-
 ``` kubectl apply -f px-spec.yaml ```
@@ -47,7 +46,8 @@ Wait till all Portworx pods show as ready in the below output:
 6. Deploy yugabyte cluster inside the k3s:
     * Run ``` kubectl create -f yugabyte-portworx-db.yaml ```
 You can see on gcp console that your pvc's have been created
-![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/pvc.png)
+
+<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/pvc.png" width="700" >
 
 7. Now for testing, lets create, load & test the sample yb_demo database and tables using below scripts:
     * From the host vm run:-
