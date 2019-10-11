@@ -57,10 +57,10 @@ gcloud services enable compute.googleapis.com
 
     ( Generated px-spec.yaml using the spec-genrator tool [here](https://central.portworx.com/))
  * Added screenshots for the referred values while generating the spec file, click for the expanded view.
-<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/basic.png" width="400" >
-<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Network.png" width="400" >
-<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Storage.png" width="400" >
-<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Customize.png" width="400" >
+<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/basic.png" width="900" >
+<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Network.png" width="900" >
+<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Storage.png" width="900" >
+<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Customize.png" width="900" >
 
 6. Monitor the portworx pods
 * Wait till all Portworx pods show as ready in the below output:
