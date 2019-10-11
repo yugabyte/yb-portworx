@@ -27,6 +27,7 @@ Below are the steps for deployment:
 
  ( Generated px-spec.yaml using the tool, added screenshots for the values reference.
 ![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/basic.png)
+<img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/basic.png" width="48">
 ![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Network.png)
 ![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Storage.png)
 ![alt text](https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Customize.png)
