@@ -87,8 +87,15 @@ kubectl exec $PX_POD -n kube-system -- /opt/pwx/bin/pxctl status
 ``` 
 kubectl create -f yugabyte-portworx-db.yaml 
 ```
+10. Portworx UI
+* We can access Portworx UI using “Lighthouse”, which is a GUI dashboard. It can be accessed using a NodePort service:
+```
+kubectl get svc -n kube-system  px-lighthouse
+```
+Open: http://<node_ip>:<service_nodeport> (default login is admin/Password1)
 
-10. Now for testing lets create, load & test the sample yb_demo database and tables using below scripts:
+
+11. Now for testing lets create, load & test the sample yb_demo database and tables using below scripts:
     * From the host vm run:-
     (Pass value to the variable "tserver" & "namespace" with the name of your tserver pod and namespace, default value set is "yb-tserver-0" & "yb-px-db" respectively.)
         * Create the database and tables
