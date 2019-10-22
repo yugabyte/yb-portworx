@@ -41,18 +41,24 @@ Below are the steps for deployment:
     --enable-autoscaling --max-nodes=6 --min-nodes=3
 ```
 
-3. set your default cluster while using gcloud:-
+3. Set your default cluster while using gcloud:-
 ``` 
 gcloud config set container/cluster px-demo 
 gcloud container clusters get-credentials px-demo --zone us-east1-b
 gcloud services enable compute.googleapis.com 
 ```
+4. Provide permissions to Portworx
+* Portworx requires a ClusterRoleBinding for your user to deploy the specs. You can do this using:
+```
+kubectl create clusterrolebinding myname-cluster-admin-binding \
+    --clusterrole=cluster-admin --user=`gcloud info --format='value(config.account)'`
+```
  
-4.  Clone this repo: 
+5.  Clone this repo: 
 *  ``` git clone git@github.com:infracloudio/yb-portworx-db.git ```
 * Change to yb-portworx-db directory in the cloned directory
 
-5. Apply the specs:-
+6. Apply the specs:-
 ``` kubectl apply -f px-spec.yaml ```
 
     ( Generated px-spec.yaml using the spec-genrator tool [here](https://central.portworx.com/))
@@ -62,13 +68,13 @@ gcloud services enable compute.googleapis.com
 <img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Storage.png" width="900" >
 <img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Customize.png" width="900" >
 
-6. Monitor the portworx pods
+7. Monitor the portworx pods
 * Wait till all Portworx pods show as ready in the below output:
 ``` 
 kubectl get pods -o wide -n kube-system -l name=portworx 
 ```
 
-7. Monitor Portworx cluster status
+8. Monitor Portworx cluster status
 ```
 PX_POD=$(kubectl get pods -l name=portworx -n kube-system -o jsonpath='{.items[0].metadata.name}')
 kubectl exec $PX_POD -n kube-system -- /opt/pwx/bin/pxctl status
@@ -76,13 +82,13 @@ kubectl exec $PX_POD -n kube-system -- /opt/pwx/bin/pxctl status
 
 * For more details and options for portworx setup refer [here](https://docs.portworx.com/portworx-install-with-kubernetes/cloud/gcp/gke/#create-your-gke-cluster-using-gcloud)
 
-8. Deploy yugabyte cluster inside the GKE cluster:
+9. Deploy yugabyte cluster inside the GKE cluster:
     * Run 
 ``` 
 kubectl create -f yugabyte-portworx-db.yaml 
 ```
 
-9. Now for testing lets create, load & test the sample yb_demo database and tables using below scripts:
+10. Now for testing lets create, load & test the sample yb_demo database and tables using below scripts:
     * From the host vm run:-
     (Pass value to the variable "tserver" & "namespace" with the name of your tserver pod and namespace, default value set is "yb-tserver-0" & "yb-px-db" respectively.)
         * Create the database and tables
