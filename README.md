@@ -61,7 +61,7 @@ kubectl create clusterrolebinding myname-cluster-admin-binding \
 6. Apply the specs:-
 ``` kubectl apply -f px-spec.yaml ```
 
-    ( Generated px-spec.yaml using the spec-genrator tool [here](https://central.portworx.com/))
+    Note:- Generate px-spec.yaml using the spec-genrator tool [here](https://central.portworx.com/) with your account. With new account it will have License Trial with 31 days of expiry.
  * Added screenshots for the referred values while generating the spec file.
 <img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/basic.png" width="900" >
 <img src="https://github.com/infracloudio/yb-portworx-db/blob/development/Images/Network.png" width="900" >
@@ -90,9 +90,10 @@ kubectl create -f yugabyte-portworx-db.yaml
 10. Portworx UI
 * We can access Portworx UI using “Lighthouse”, which is a GUI dashboard. It can be accessed using a NodePort service:
 ```
+kubectl get nodes -o wide (use any external ip)
 kubectl get svc -n kube-system  px-lighthouse
 ```
-Open: http://<node_ip>:<service_nodeport> (default login is admin/Password1)
+    Open: http://<node_ip>:<service_nodeport> (default login is admin/Password1)
 
 
 11. Now for testing lets create, load & test the sample yb_demo database and tables using below scripts:
@@ -104,6 +105,6 @@ Open: http://<node_ip>:<service_nodeport> (default login is admin/Password1)
         * Now start loading the data in table "orders" 
         ``` ./DB_Load.sh ```
         * Open host vm in new window and run the test script :-
-        ``` ./DB_Test ``` 
+        ``` ./DB_Test.sh ``` 
         (Pass value to the variable "host" with the name of your tserver node)
         * If your are getting output with increasing number of counts for the table "orders" you have successfully configured the yugabyte DB with portworx.
