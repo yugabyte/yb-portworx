@@ -64,6 +64,8 @@ metadata:
 provisioner: kubernetes.io/portworx-volume
 parameters:
   repl: "1"
+  io_profile: "db"
+  disable_io_profile_protection: "1"
 ---
 apiVersion: apps/v1beta1
 kind: StatefulSet
