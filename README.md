@@ -1,5 +1,5 @@
 # yb-portworx-db
-Instructions for deploying YugaByte DB with Portworx on GKE.
+Instructions for deploying YugabyteDB with Portworx on GKE.
 
 ## Pre-req
 Before installing Portworx-Enterprise, make sure your environment meets the following requirements: 
@@ -82,7 +82,7 @@ kubectl exec $PX_POD -n kube-system -- /opt/pwx/bin/pxctl status
 
 * For more details and options for portworx setup refer [here](https://docs.portworx.com/portworx-install-with-kubernetes/cloud/gcp/gke/#create-your-gke-cluster-using-gcloud)
 
-9. Deploy yugabyte cluster inside the GKE cluster:
+9. Deploy YugabyteDB cluster inside the GKE cluster:
     * Run 
 ``` 
 kubectl create -f yugabyte-portworx-db.yaml 
@@ -107,4 +107,4 @@ kubectl get svc -n kube-system  px-lighthouse
         * Open host vm in new window and run the test script :-
         ``` ./DB_Test.sh ``` 
         (Pass value to the variable "host" with the name of your tserver node)
-        * If your are getting output with increasing number of counts for the table "orders" you have successfully configured the yugabyte DB with portworx.
+        * If your are getting output with increasing number of counts for the table "orders" you have successfully configured the YugabyteDB with portworx.
